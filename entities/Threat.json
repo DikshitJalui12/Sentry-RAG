@@ -1,0 +1,121 @@
+{
+  "name": "Threat",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Threat title/identifier"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed threat description"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low",
+        "info"
+      ],
+      "default": "medium",
+      "description": "Threat severity level"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "malware",
+        "phishing",
+        "data_breach",
+        "insider_threat",
+        "network_intrusion",
+        "ddos",
+        "ransomware",
+        "social_engineering",
+        "zero_day",
+        "misconfiguration",
+        "other"
+      ],
+      "default": "other",
+      "description": "Threat category"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "investigating",
+        "contained",
+        "resolved",
+        "false_positive"
+      ],
+      "default": "active",
+      "description": "Current threat status"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source that detected the threat"
+    },
+    "affected_systems": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Systems affected by this threat"
+    },
+    "mitre_attack_techniques": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "MITRE ATT&CK technique IDs (e.g., T1059.003)"
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Threat indicators (IPs, domains, hashes)"
+    },
+    "ai_analysis": {
+      "type": "string",
+      "description": "AI-generated analysis of the threat"
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recommended remediation steps"
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "AI confidence score (0-100)"
+    },
+    "detected_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the threat was first detected"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the threat was resolved"
+    }
+  },
+  "required": [
+    "title",
+    "severity",
+    "category"
+  ]
+}

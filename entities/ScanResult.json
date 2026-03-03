@@ -1,0 +1,115 @@
+{
+  "name": "ScanResult",
+  "type": "object",
+  "properties": {
+    "scan_name": {
+      "type": "string",
+      "description": "Name of the scan"
+    },
+    "scan_type": {
+      "type": "string",
+      "enum": [
+        "full_system",
+        "network",
+        "endpoint",
+        "cloud",
+        "database",
+        "application",
+        "predictive"
+      ],
+      "description": "Type of scan performed"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "running",
+        "completed",
+        "failed",
+        "analyzing"
+      ],
+      "default": "running",
+      "description": "Current scan status"
+    },
+    "current_action": {
+      "type": "string",
+      "description": "Current action being performed (e.g. 'Scanning ports...', 'Analyzing traffic...')"
+    },
+    "progress": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "default": 0,
+      "description": "Scan progress percentage"
+    },
+    "threats_found": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of threats detected"
+    },
+    "vulnerabilities_found": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of vulnerabilities found"
+    },
+    "assets_scanned_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of assets scanned"
+    },
+    "risk_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 10,
+      "description": "Overall risk score (0-10)"
+    },
+    "target_network": {
+      "type": "string",
+      "description": "Target network or range"
+    },
+    "compliance_passed": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the scan passed compliance checks"
+    },
+    "ml_predictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "threat_type": {
+            "type": "string"
+          },
+          "probability": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "ML-predicted future threats"
+    },
+    "scan_results": {
+      "type": "object",
+      "description": "Detailed scan results"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When scan started"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When scan completed"
+    },
+    "duration": {
+      "type": "number",
+      "description": "Scan duration in seconds"
+    }
+  },
+  "required": [
+    "scan_name",
+    "scan_type"
+  ]
+}

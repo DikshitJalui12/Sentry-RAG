@@ -1,0 +1,82 @@
+{
+  "name": "Alert",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Alert title"
+    },
+    "message": {
+      "type": "string",
+      "description": "Alert message"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "critical",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default": "medium",
+      "description": "Alert priority"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "threat_detected",
+        "system_anomaly",
+        "threshold_exceeded",
+        "source_offline",
+        "investigation_required",
+        "other"
+      ],
+      "description": "Type of alert"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "acknowledged",
+        "resolved",
+        "dismissed"
+      ],
+      "default": "new",
+      "description": "Alert status"
+    },
+    "threat_id": {
+      "type": "string",
+      "description": "Related threat ID if applicable"
+    },
+    "mitre_attack_techniques": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "MITRE ATT&CK technique IDs relevant to the alert"
+    },
+    "acknowledged_by": {
+      "type": "string",
+      "description": "User who acknowledged the alert"
+    },
+    "acknowledged_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When alert was acknowledged"
+    },
+    "resolved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When alert was resolved"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes"
+    }
+  },
+  "required": [
+    "title",
+    "priority",
+    "type"
+  ]
+}

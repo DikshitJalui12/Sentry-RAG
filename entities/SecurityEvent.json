@@ -1,0 +1,69 @@
+{
+  "name": "SecurityEvent",
+  "type": "object",
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "login",
+        "logout",
+        "failed_login",
+        "file_access",
+        "process_start",
+        "network_connection",
+        "privilege_escalation",
+        "other"
+      ],
+      "description": "Type of security event"
+    },
+    "user_identifier": {
+      "type": "string",
+      "description": "User or service account identifier (e.g. svc_admin)"
+    },
+    "source_ip": {
+      "type": "string",
+      "description": "Source IP address"
+    },
+    "destination_ip": {
+      "type": "string",
+      "description": "Destination IP address (if applicable)"
+    },
+    "user_agent": {
+      "type": "string",
+      "description": "User agent string or client identifier"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure",
+        "blocked",
+        "suspicious"
+      ],
+      "default": "success",
+      "description": "Outcome of the event"
+    },
+    "details": {
+      "type": "string",
+      "description": "Additional event details (JSON string or text)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Exact time of the event occurrence"
+    },
+    "mitre_attack_techniques": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Related MITRE ATT&CK techniques if applicable"
+    }
+  },
+  "required": [
+    "event_type",
+    "user_identifier",
+    "timestamp",
+    "status"
+  ]
+}

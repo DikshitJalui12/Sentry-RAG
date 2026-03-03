@@ -1,0 +1,64 @@
+{
+  "name": "DataSource",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Source name"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "network_traffic",
+        "system_logs",
+        "email_gateway",
+        "web_traffic",
+        "database_activity",
+        "api_endpoint",
+        "file_system",
+        "cloud_service",
+        "threat_feed",
+        "iot_device",
+        "container_registry",
+        "other"
+      ],
+      "description": "Type of data source"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "inactive",
+        "error"
+      ],
+      "default": "active",
+      "description": "Source operational status"
+    },
+    "endpoint": {
+      "type": "string",
+      "description": "Connection endpoint or URL"
+    },
+    "description": {
+      "type": "string",
+      "description": "Source description"
+    },
+    "last_scan": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time this source was scanned"
+    },
+    "threats_detected": {
+      "type": "number",
+      "default": 0,
+      "description": "Total threats detected from this source"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional source configuration"
+    }
+  },
+  "required": [
+    "name",
+    "type"
+  ]
+}

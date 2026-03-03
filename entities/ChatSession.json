@@ -1,0 +1,23 @@
+{
+  "name": "ChatSession",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the chat session"
+    },
+    "conversation_id": {
+      "type": "string",
+      "description": "ID of the agent conversation"
+    },
+    "last_message_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last message"
+    }
+  },
+  "required": [
+    "title",
+    "conversation_id"
+  ]
+}
